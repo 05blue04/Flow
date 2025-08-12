@@ -1,14 +1,13 @@
-package router
+package api
 
 import (
 	"net/http"
-
-	"github.com/05blue04/Flow/internal/handlers"
 )
 
 type Handlers struct {
-	User   *handlers.UserHandler
-	Health *handlers.HealthHandler
+	User   *UserHandler
+	Health *HealthHandler
+	//plan on adding more handlers here depending on the /resources i define
 }
 
 func Setup(h *Handlers) http.Handler {

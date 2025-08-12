@@ -1,4 +1,4 @@
-package handlers
+package api
 
 import (
 	"encoding/json"
@@ -20,14 +20,6 @@ func NewUserHandler(app *config.App) *UserHandler {
 	return &UserHandler{
 		app: app,
 	}
-}
-
-type User struct {
-	ID        uuid.UUID `json:"id"`
-	Username  string    `json:"username"`
-	Email     string    `json:"email"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
@@ -67,7 +59,7 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	newU := User{
+	newU := types.User{
 		ID:        u.ID,
 		Username:  u.Username,
 		Email:     u.Username,
